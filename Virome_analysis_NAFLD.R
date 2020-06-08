@@ -617,15 +617,26 @@ ggplot(data = importancefib12New,
 
 
 row.names(importancefib12)
-RFtaxafib2<-data1[c("Group2",    "Species_phages_Lactococcus_phage_Tuc2009_p" ,  
-                    "Species_phages_Lactococcus_phage_phiLC3_p",     "Species_phages_Lactococcus_phage_KSY1_p"    ,   
+RFtaxafib2<-data1[c("Group2",   
+                    "Species_phages_Lactococcus_phage_Tuc2009_p" ,  
+                    "Species_phages_Lactococcus_phage_phiLC3_p",    
+                    "Species_phages_Lactococcus_phage_KSY1_p"    ,   
                     "Species_phages_Lactococcus_phage_949_p"    ,   
-                    "Species_phages_Leuconostoc_phage_phiLN12_p",    "Species_phages_Lactococcus_phage_TP901_1_p"  , 
-                    "Species_phages_Lactococcus_phage_63301_p" ,                      "Species_phages_Lactococcus_phage_ul36_p"  ,    
-                    "Species_phages_Lactococcus_phage_50101_p"  ,    "Species_phages_Leuconostoc_phage_phiLN04_p" ,   "Species_phages_Lactococcus_phage_r1t_p"     ,  
-                    "Species_phages_Bacteroides_phage_B40_8_p"  ,    "Species_phages_Lactobacillus_phage_phiAT3_p"  ,
-                    "Species_phages_Streptococcus_phage_YMC_2011_p", "Species_phages_Leuconostoc_phage_phiLN03_p" ,   "Species_phages_Lactococcus_phage_BK5_T_p"   ,  
-                    "Species_phages_Streptococcus_phage_5093_p"  ,   "Species_phages_Lactobacillus_phage_J_1_p"  ,    "Species_phages_Lactococcus_phage_M6165_p" )]
+                    "Species_phages_Leuconostoc_phage_phiLN12_p",  
+                    "Species_phages_Lactococcus_phage_TP901_1_p"  , 
+                    "Species_phages_Lactococcus_phage_63301_p" ,                    
+                    "Species_phages_Lactococcus_phage_ul36_p"  ,    
+                    "Species_phages_Lactococcus_phage_50101_p"  ,   
+                    "Species_phages_Leuconostoc_phage_phiLN04_p" ,  
+                    "Species_phages_Lactococcus_phage_r1t_p"     ,  
+                    "Species_phages_Bacteroides_phage_B40_8_p"  ,   
+                    "Species_phages_Lactobacillus_phage_phiAT3_p"  ,
+                    "Species_phages_Streptococcus_phage_YMC_2011_p",
+                    "Species_phages_Leuconostoc_phage_phiLN03_p" ,  
+                    "Species_phages_Lactococcus_phage_BK5_T_p"   ,  
+                    "Species_phages_Streptococcus_phage_5093_p"  ,  
+                    "Species_phages_Lactobacillus_phage_J_1_p"  ,   
+                    "Species_phages_Lactococcus_phage_M6165_p" )]
 
 
 spec<-RFtaxafib2[2:ncol(RFtaxafib2)]

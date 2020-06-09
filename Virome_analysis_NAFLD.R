@@ -167,9 +167,9 @@ ggplot(dat, aes(fill=Type3, y=Value, x=-ID)) +
 b2<-ggplot(data)+
   aes(data$Group,  data$InvSimpsonVirome)+
   geom_boxplot(width=0.6,lwd=1,outlier.colour = NA,aes(fill=Group))+
-  scale_x_discrete(limits=c("Control", "PBC", "NAFLD1", "NAFLD2"))+
+  scale_x_discrete(limits=c("Control", "PBC", "NAS 0-4", "NAS 5-8/LCI"))+
   scale_y_continuous(name="Inverse Simpson index")+
-  scale_fill_manual(limits=c("Control", "PBC", "NAFLD1", "NAFLD2"),
+  scale_fill_manual(limits=c("Control", "PBC","NAS 0-4", "NAS 5-8/LCI"),
                     values=c("gray93" ,"lightblue3", "rosybrown3","indianred3"))+
   geom_jitter(width = 0.2, alpha=0.5,size=3, shape=21,colour="black", 
               aes(fill=Group))+

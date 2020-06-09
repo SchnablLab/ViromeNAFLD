@@ -965,6 +965,85 @@ ggarrange(t1,t2,t3,t1f,widths = c(1,1.1,1,1.2), ncol=4)
 ################
 
 
+####Figure 6A####
+
+bacteria<-data1[c(650:856)]
+bacteria<-bacteria[,order(colSums(bacteria),decreasing=TRUE)]
+bacteria<-bacteria[, c(1:2, 2+which(colSums(bacteria[3:ncol(bacteria)]) >0))]
+bacteria<-bacteria[(1:20)]
+A<-as.matrix(bacteria)
+
+Phages<-data1[c(1466:1498)]
+Phages<-Phages[,order(colSums(Phages),decreasing=TRUE)]
+Phages<-Phages[, c(1:2, 2+which(colMeans(Phages[3:ncol(Phages)]) >0))]
+Phages<-Phages[(1:20)]
+B<-as.matrix(Phages)
+
+corrrr<- rcorr(A, B, type="spearman")
+corP<-corrrr$P
+corR<-corrrr$r
+corN<-corrrr$n
+row.names(corR)
+
+C=corP[c(21:40),c(1:20)]
+
+D=corR[c(21:40),c(1:20)]
+
+N=corN[c(21:40),c(1:20)]
+
+stars1 <-cut(C, breaks=c(-Inf, 0.001, 0.01, 0.05, Inf), label=c("***", "**", "*", ""))
+
+ggplot(melt(D), aes(Var2, Var1, fill=value)) +
+  ggtitle("Title")+
+  geom_tile(colour = "white", size = 0.2) +
+  scale_fill_gradient2(low="dodgerblue4", mid="white", high="firebrick3") +
+  theme_minimal()+  
+  scale_y_discrete(labels=c(bquote(italic("Lactococcus")~"phages"),
+                            bquote(italic("Enterobacteria")~"phages"),
+                            bquote(italic("Leuconostoc")~"phages"),
+                            bquote(italic("Escherichia")~"phages"),
+                            bquote(italic("Streptococcus")~"phages"),
+                            
+                            bquote(italic("Salmonella")~"phages"),
+                            bquote(italic("Lactobacillus")~"phages"),
+                            bquote(italic("Shigella")~"phages"),
+                            bquote(italic("Pseudomonas")~"phages"),
+                            bquote(italic("Propionibacterium")~"phages"),
+                            bquote(italic("Bacteroides")~"phages"),
+                            bquote(italic("Edwardsiella")~"phages"),
+                            bquote(italic("Enterococcus")~"phages"),
+                            bquote(italic("Staphylococcus")~"phages"),
+                            bquote(italic("Klebsiella")~"phages"),
+                            bquote(italic("Yersinia")~"phages"),
+                            bquote(italic("Clostridium")~"phages"),
+                            bquote(italic("Rhodoferax")~"phages"),
+                            bquote(italic("Brochothrix")~"phages"),
+                            bquote(italic("Cronobacter")~"phages")))+
+  labs(x="",y="",fill="R") + 
+  geom_text(aes(label=stars1), color="black", size=8, hjust=0.5, vjust=0.8)+
+  theme_test()+
+  theme(text = element_text(colour = "black", size=20),
+        axis.text=element_text(colour="black", size=20),
+        axis.title.y = element_text(vjust=5, face="bold"),
+        panel.border = element_rect(size=2),
+        axis.text.y = element_text(colour="black", size=20),
+        axis.text.x = element_text(colour="black", size=20,
+                                   angle=45, vjust=1, hjust=1,face="italic"),
+        axis.title.x = element_text(vjust=-5, face="bold"),
+        legend.justification = "top",
+        legend.text = element_text( size=24),
+        axis.ticks = element_line(color = "black", size=1.2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(),
+        legend.key.size = unit(0.8, "cm"),
+        legend.key.width = unit(1,"cm"),
+        plot.title = element_blank())+
+  theme(plot.margin=unit(c(1,0.5,1.5,1),"cm"))
+
+
+####Figure 6B####
+
+
 datab<-data1[c(1,12,1466:1498)]
 datab<-datab[, c(1:2, 2+which(colSums(datab[3:ncol(datab)]) >0))]
 Generab<-datab[3:27]
@@ -1423,8 +1502,5 @@ xx=factor(F2_F4$PPI)
 ks.table<-kd.fun(xx,F2_F4[,878:880],"fdr")
 ks.table<-as.data.frame(ks.table)
 View(ks.table)
-
-summary(glm(data1$Group1~PPI+data1$InvSimpsonVirome, family="binomial", data=data1))
-summary(glm(data1$Group2~PPI+data1$InvSimpsonVirome, family="binomial", data=data1))
 
 
